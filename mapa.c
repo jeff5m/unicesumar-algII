@@ -31,23 +31,23 @@ void printMenu()
   printf("=======================================\n");
 }
 
-void listProjectsToDo()
-{
-  printf("listando projetos a fazer\n");
-  printMenu();
-}
+// void listProjectsToDo()
+// {
+//   printf("listando projetos a fazer\n");
+//   printMenu();
+// }
 
-void listProjectsOnGoing()
-{
-  printf("listando projetos fazendo\n");
-  printMenu();
-}
+// void listProjectsOnGoing()
+// {
+//   printf("listando projetos fazendo\n");
+//   printMenu();
+// }
 
-void listProjectsDone()
-{
-  printf("listando projetos concluídos\n");
-  printMenu();
-}
+// void listProjectsDone()
+// {
+//   printf("listando projetos concluídos\n");
+//   printMenu();
+// }
 
 int main()
 {
@@ -70,7 +70,7 @@ int main()
 
       int enumStatus;
       printf("\nCadastro de Projeto\n");
-      printf("Código: %d", projects[idCount - 1].id);
+      printf("Código: %d", idCount);
       projects[idCount - 1].id = idCount;
       printf("\nTítulo: ");
       scanf("%s", projects[idCount - 1].title);
@@ -89,7 +89,7 @@ int main()
       scanf("%d", &projects[idCount - 1].daysToFinish);
       printf("Quantidade de Pessoas: ");
       scanf("%d", &projects[idCount - 1].people);
-      printf("Projeto cadastrado com sucesso!\n\n");
+      printf("\nProjeto cadastrado com sucesso!\n\n");
       idCount++;
       printMenu();
       break;
@@ -97,6 +97,12 @@ int main()
     case 2:
       for (int i = 0; i < idCount; i++)
       {
+        if (projects[i].id == 0)
+        {
+          printf("\nNão existem projetos cadastrados\n\n");
+          printMenu();
+          continue;
+        }
         printf("Projeto: %d\n", projects[i].id);
         printf("Título: %s\n", projects[i].title);
         printf("Descrição: %s\n", projects[i].description);
@@ -110,19 +116,71 @@ int main()
       break;
 
     case 3:
-      listProjectsToDo();
+      for (int i = 0; i < idCount; i++)
+      {
+        if (projects[i].status != 1)
+        {
+          printf("\nNão existem projetos a fazer\n\n");
+          printMenu();
+          continue;
+        }
+        printf("Projeto: %d\n", projects[i].id);
+        printf("Título: %s\n", projects[i].title);
+        printf("Descrição: %s\n", projects[i].description);
+        printf("Ano: %d\n", projects[i].year);
+        printf("Status(1 (A Fazer), 2 (Fazendo) ou 3 (Concluído): %d\n", projects[i].status);
+        printf("Gerente: %s\n", projects[i].manager);
+        printf("Orçamento: %.2lf\n", projects[i].budget);
+        printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
+        printf("Quantidade de Pessoas: %d\n", projects[i].people);
+      }
       break;
 
     case 4:
-      listProjectsOnGoing();
+      for (int i = 0; i < idCount; i++)
+      {
+        if (projects[i].status != 2)
+        {
+          printf("\nNão existem projetos em andamento\n\n");
+          printMenu();
+          continue;
+        }
+        printf("Projeto: %d\n", projects[i].id);
+        printf("Título: %s\n", projects[i].title);
+        printf("Descrição: %s\n", projects[i].description);
+        printf("Ano: %d\n", projects[i].year);
+        printf("Status(1 (A Fazer), 2 (Fazendo) ou 3 (Concluído): %d\n", projects[i].status);
+        printf("Gerente: %s\n", projects[i].manager);
+        printf("Orçamento: %.2lf\n", projects[i].budget);
+        printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
+        printf("Quantidade de Pessoas: %d\n", projects[i].people);
+      }
       break;
 
     case 5:
-      listProjectsDone();
+      for (int i = 0; i < idCount; i++)
+      {
+        if (projects[i].status != 3)
+        {
+          printf("\nNão existem projetos concluídos\n\n");
+          printMenu();
+          continue;
+        }
+        printf("Projeto: %d\n", projects[i].id);
+        printf("Título: %s\n", projects[i].title);
+        printf("Descrição: %s\n", projects[i].description);
+        printf("Ano: %d\n", projects[i].year);
+        printf("Status(1 (A Fazer), 2 (Fazendo) ou 3 (Concluído): %d\n", projects[i].status);
+        printf("Gerente: %s\n", projects[i].manager);
+        printf("Orçamento: %.2lf\n", projects[i].budget);
+        printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
+        printf("Quantidade de Pessoas: %d\n", projects[i].people);
+      }
       break;
 
     default:
-      printf("Opção inválida. Digite novamente.\n");
+      printf("\nOpção inválida. Digite novamente.\n\n");
+      printMenu();
       break;
     }
   }
