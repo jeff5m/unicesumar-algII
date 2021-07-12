@@ -49,6 +49,7 @@ void printMenu()
 //   printMenu();
 // }
 
+// <== TODO: criar uma rotina customizada ==>
 int main()
 {
   int menu, idCount = 1;
@@ -100,8 +101,7 @@ int main()
         if (projects[i].id == 0)
         {
           printf("\nNão existem projetos cadastrados\n\n");
-          printMenu();
-          continue;
+          break;
         }
         printf("Projeto: %d\n", projects[i].id);
         printf("Título: %s\n", projects[i].title);
@@ -113,6 +113,7 @@ int main()
         printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
         printf("Quantidade de Pessoas: %d\n", projects[i].people);
       }
+      printMenu();
       break;
 
     case 3:
@@ -121,8 +122,7 @@ int main()
         if (projects[i].status != 1)
         {
           printf("\nNão existem projetos a fazer\n\n");
-          printMenu();
-          continue;
+          break;
         }
         printf("Projeto: %d\n", projects[i].id);
         printf("Título: %s\n", projects[i].title);
@@ -134,6 +134,7 @@ int main()
         printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
         printf("Quantidade de Pessoas: %d\n", projects[i].people);
       }
+      printMenu();
       break;
 
     case 4:
@@ -142,8 +143,7 @@ int main()
         if (projects[i].status != 2)
         {
           printf("\nNão existem projetos em andamento\n\n");
-          printMenu();
-          continue;
+          break;
         }
         printf("Projeto: %d\n", projects[i].id);
         printf("Título: %s\n", projects[i].title);
@@ -155,6 +155,7 @@ int main()
         printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
         printf("Quantidade de Pessoas: %d\n", projects[i].people);
       }
+      printMenu();
       break;
 
     case 5:
@@ -163,8 +164,7 @@ int main()
         if (projects[i].status != 3)
         {
           printf("\nNão existem projetos concluídos\n\n");
-          printMenu();
-          continue;
+          break;
         }
         printf("Projeto: %d\n", projects[i].id);
         printf("Título: %s\n", projects[i].title);
@@ -176,6 +176,7 @@ int main()
         printf("Estimativa para Conclusão em dias: %d\n", projects[i].daysToFinish);
         printf("Quantidade de Pessoas: %d\n", projects[i].people);
       }
+      printMenu();
       break;
 
     default:
