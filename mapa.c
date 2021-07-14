@@ -24,15 +24,15 @@ struct project projects[200];
 
 void printMenu()
 {
-  printf("=================================================================\n");
+  printf("===============================================================\n");
   printf(" 1 - Inserir novo projeto\n");
   printf(" 2 - Listar todos os projetos\n");
   printf(" 3 - Listar todos os projetos: a fazer\n");
   printf(" 4 - Listar todos os projetos: fazendo\n");
   printf(" 5 - Listar todos os projetos feitos\n");
-  printf(" 6 - Listar todos os projetos de orçamento superior a 1000,00\n");
+  printf(" 6 - Listar todos os projetos por limite de orçamento\n");
   printf(" 0 - Sair\n");
-  printf("=================================================================\n\n");
+  printf("===============================================================\n\n");
 }
 
 int createProject()
@@ -189,15 +189,21 @@ int main()
       break;
 
     case 6:
+      goto Cleanup;
+    Cleanup:;
+      double limitBudget;
+      printf("Digite o orçamento limite para listar os projetos: ");
+      scanf("%lf", &limitBudget);
+
       for (int i = 0; i < idCount; i++)
       {
-        if (projects[i].budget < 1000.00 && idCount == 1)
+        if (projects[i].budget < limitBudget && idCount == 1)
         {
           printf("\n Não existem projetos cadastrados\n\n");
           break;
         }
 
-        if (projects[i].budget < 1000.00)
+        if (projects[i].budget < limitBudget)
         {
           printf("\n");
           continue;
